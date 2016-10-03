@@ -1,73 +1,70 @@
 (function(){
   "use strict";
 
-  var turns = 10;
-  var guess;
-  var guesses = [];
+  var turns = 0;
 
-  var lives = document.getElementById('lives');
-  var textBox = document.getElementById('text-box');
+  var userInterface = document.getElementById('userInterface');
 
   function randomWord(commonWords){
-    var randomIndex = commonWords[Math.floor(Math.random()*commonWords.length)];
-    return randomIndex;
-  }
+      var randomIndex = commonWords[Math.floor(Math.random()*commonWords.length)];
+      return randomIndex;
+    }
 
   var word = commonWords.filter(function(words){
-    return words.length>2;
-  });
+      return words.length>2;
+    });
 
-  var guessDisplay = new Array(word.length);
+  var guessThisWord = randomWord(word);
 
-  for (var i = 0; i < guessDisplay.length; i++){
-    guessDisplay[i] = "_ ";
+  var wordCover = new Array(guessThisWord.length);
+
+  for (var i = 0; i < wordCover.length; i++){
+    wordCover[i] = "_ ";
   }
 
-  // function printGuessDisplay(){
-  //   for (var i = 0; i < word.length; i++){
-  //     var cover = document.createTextNode(guessDisplay[i]);
-  //     textBox.appendChild(cover);
-  //   }
-  // }
 
-  // for (var i = 0; i < word.length; i++){
-  //   word[i] = "_ ";
-  // }
+  console.log(guessThisWord);
+  console.log(wordCover);
 
-  textBox.innerHTML = randomWord(word).split(' ');
-
-  var checkUserInput = function(){
-    var a = document.userinput;
-    var b = a.elements["userguess"];
-    var character = b.value;
-      for (var i = 0; i < word.length; i++){
-        if (word[i] === character){
-          word[i] = character + " ";
-          var check = true;
-        }
-        b.value = "";
-      }
-  }
-
- document.getElementById("userguess").addEventListener("click", letterInputFunction);
-  function letterInputFunction() {
-     var letterInput = [];
-     letterInput.push(document.getElementsByName("userguess")[0].value);
-     console.log(letterInput);
-  }
-
-  //console.log(checkUserInput);
-
-  function lifeBar(){
-    lives.innerHTML = "You have " + turns + " turns remaining.";
-    if (lives < 1){
-      lives.innerHTML = "Game Over";
+  function printGuessWord(){
+    for (var i = 0; i < wordCover.length; i++){
+      var guessThis = document.getElementById("guessThis");
+      var holder = document.createTextNode(wordCover[i]);
+      guessThis.appendChild(holder);
     }
-    for (var i = 0; i < guesses.length; i++){
-      if (pickedWord === guesses.length){
-        lives.innerHTML = "You Win!";
+  }
+
+  var checkGuess = function(){
+    //var f = document.userInterface;
+    //var userInterface = elements["userInput"];
+    var guess = document.getElementById('userInput');
+    for (var i = 0; i < guessThisWord.length; i++){
+      if (guessThisWord === guess){
+        wordCover[i] = guess + " ";
+        var truth = true;
       }
+      guess.value = "";
     }
+  }
+
+  document.getElementById("userGuess").addEventListener("click", checkGuess);
+
+  var guessThis = document.getElementById("guessThis");
+  guessThis.innerHTML = "";
+  printGuessWord();
+
+  var finished = false;
+  for (var i = 0; i < wordCover; i++){
+    if(wordCover[i] === "_ "){
+      finished = true;
+    }
+  }
+  if(finished){
+    window.alert("You Win!");
+  }
+
+  if (turns === 6){
+    window.alert("You have been hung!");
   }
 
 

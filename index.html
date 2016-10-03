@@ -8,26 +8,23 @@
   </head>
   <body>
 
-    <div class="container">
+    <div class = "container">
 
-    <div class="row">
-      <div class="col-md-12 text-center"><h1>Hangman</h1></div>
+      <div class = "row">
+        <div class = "col-md-12 text-center"><h1>Hangman</h1></div>
+      </div>
+
+      <div class = "row">
+        <div class = "col-md-12 text-center"><p id = "guessThis"></p></div>
+          <div class = "col-md-12 text-center">
+            <form id = "userInterface" class = "guess-text">
+              <input id = "userInput" type = "text" size = "5" maxlength = "1">
+              <input id = "userGuess" type = "button" value = "Guess">
+            </form>
+          </div>
+      </div>
+
     </div>
-
-    <div class="row">
-      <div id="text-box" class="col-md-12 text-center text-holder"></div>
-      <div id="lives" class="col-md-12 text-center text-holder"></div>
-    </div>
-
-    <div class="row">
-      <form id="userinput" class="form-inline text-center">
-        <div class="form-group">
-          <input id="userguess" type="text" size="5" maxlength="1" class="form-control" value="" placeholder="Your Guess Here"></div>
-        <button type="button" class="btn btn-default" id="guess-button">Guess</button>
-      </form>
-    </div>
-
-  </div>
 
 
     <script src="js/common-words.js" type="text/javascript"></script>
