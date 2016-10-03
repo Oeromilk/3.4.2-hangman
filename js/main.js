@@ -78,18 +78,5 @@
   guessThis.innerHTML = "";
   printGuessWord();
 
-  // var finished;
-  // for (var i = 0; i < wordCover; i++){
-  //   if(document.getElementBy('guessThis').textContent === wordCover){
-  //     // finished = true;
-  //     alert('you win!')
-  //   }
-  // }
-  // if(finished){
-  //   window.alert("You Win!");
-  // }
-
-
-
-
+  
 }());
